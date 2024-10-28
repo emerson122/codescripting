@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details</title>
+    <style>
+        :root {
+            --bg-dark: #1a1b1f;
+            --bg-card: #25262b;
+            --accent: #3b82f6;
+            --text: #ffffff;
+            --text-secondary: #9ca3af;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        .card:visited .card-title {
+    color: var(--text); /* Define el color que quieras aquí */
+}
+.logo a {
+    color: var(--accent); /* Define aquí el color que quieras para el texto y el SVG */
+    text-decoration: none; /* Opcional: elimina el subrayado */
+}
+
+.logo a:visited {
+    color: var(--accent); /* Asegura que se mantenga el mismo color en el estado visitado */
+}
+
+.logo svg {
+    color: inherit; /* Hereda el color del enlace para que se mantenga consistente */
+}
+
+        
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text);
+        }
+        
+       /*Inicio Navbar*/
+
+nav {
+            background-color: var(--bg-card);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            position: relative;
+        }
+            /* Nuevo estilo para el estado activo */
+            .nav-links a.active {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: var(--accent);
+        }
+           /* Línea inferior para el estado activo */
+           .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        
+        .nav-links a:hover {
+            color: var(--accent);
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+        /*Fin Navbar*/
+        
+        .container {
+            max-width: 1200px;
+            margin: 6rem auto 2rem;
+            padding: 0 1rem;
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .card {
+            background-color: var(--bg-card);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: transform 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-text {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+        
+        .tag {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--text);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+        }
+        .githhub {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: #FFFFFF;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+        }
+
+        /* Estilos para la página de detalle */
+        .detail-container {
+            max-width: 900px;
+            margin: 6rem auto 2rem;
+            padding: 0 1rem;
+        }
+
+        .detail-header {
+            margin-bottom: 2rem;
+        }
+
+        .detail-header h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .detail-metadata {
+            display: flex;
+            gap: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .detail-metadata span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .detail-content {
+            background-color: var(--bg-card);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .detail-image {
+            width: 100%;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .detail-section {
+            margin-bottom: 2rem;
+        }
+
+        .detail-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .detail-section h3 {
+            font-size: 1.25rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--text);
+        }
+
+        .detail-section p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        #home, #detail-page {
+            display: none;
+        }
+
+        .active {
+            display: block !important;
+        }
+        
+
+        
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo"><a href="index.html">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            CodeScripting
+        </a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#history">History</a>
+            <a href="#about">About</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Página de detalle -->
+        <section class="detail-container">
+            <div class="detail-header">
+                <h1>Network Flood Simulation</h1>
+                <div class="detail-metadata">
+                    <span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        2024-03-29
+                    </span>
+                    <span>
+                       <a class="githhub" href="https://github.com/emerson122/Network-Flood-Simulation.git" style="text-decoration: none; ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.54 5.47 7.59.4.07.55-.17.55-.37 0-.19-.01-.79-.01-1.43-2.24.49-2.71-1.08-2.71-1.08-.37-.95-.91-1.2-.91-1.2-.75-.51.06-.5.06-.5.83.06 1.27.85 1.27.85.74 1.27 1.94.91 2.41.69.07-.54.29-.91.53-1.12-1.76-.2-3.62-.88-3.62-3.91 0-.86.31-1.56.82-2.12-.08-.2-.36-1.02.08-2.12 0 0 .66-.21 2.15.82a7.48 7.48 0 012.09-.28c.71 0 1.42.1 2.09.28 1.49-1.03 2.15-.82 2.15-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.26.82 2.12 0 3.03-1.86 3.71-3.63 3.91.3.26.56.78.56 1.57 0 1.14-.01 2.06-.01 2.34 0 .21.15.45.55.37A8.006 8.006 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                             
+                        View  in Githhub
+                    </a>
+                    </span>
+                    <hr>
+                    <span class="tag">Traffic Generation</span>
+                    <span class="tag">DDoS Simulation</span>
+                </div>
+            </div>
+
+            <div class="detail-content">
+                <div class="detail-section">
+                    <h2>Overview</h2>
+                    <img src="/img/Portada_NFS.png" alt="Project Overview" class="detail-image">
+                    <p><b> Este script,  está diseñado para simular un ataque de Denegación de Servicio Distribuido (DDoS) dirigido al localhost (127.0.0.1) en un entorno controlado. Su objetivo es generar una gran cantidad de solicitudes HTTP en un corto período de tiempo, utilizando múltiples hilos para replicar el comportamiento de un ataque DDoS real. Es importante destacar que este script es únicamente para fines educativos, permitiendo a los usuarios comprender los conceptos de ataques de red y la generación de tráfico sin comprometer sistemas externos.
+                         Se recomienda utilizarlo únicamente en entornos seguros y controlados, como parte de la investigación y el aprendizaje en ciberseguridad.</b></p>
+                </div>
+
+                <div class="detail-section">
+                    <h2>Process</h2>
+                    
+                    <h3>1. Configuración Inicial</h3>
+                    <img src="/img/config_NFS.png" alt="Reconnaissance" class="detail-image">
+                    Se establece el objetivo del ataque (localhost), el puerto, el número de hilos a utilizar y la duración del ataque.</p>
+
+                    <h3>2. Generación de IPs Aleatoria:</h3>
+                    <img src="/img/randomIP_NFS.png" alt="Assessment" class="detail-image">
+                        Esta función simula múltiples fuentes de tráfico en el ataque.</b></p>
+
+                    <h3>3. Envío de Paquetes:</h3>
+                    <img src="/img/SendPacket_NFS.png" alt="Exploitation" class="detail-image">
+                    Esta función realiza la conexión al objetivo, envía solicitudes HTTP y cierra el socket.</b></p>
+                        
+                    <h3>4. Inicio del Ataque:</h3>
+                    <img src="/img/StartAttack_NFS.png" alt="Exploitation" class="detail-image">
+                    Aquí se crean y inician los hilos para ejecutar send_packets(), y se espera a que todos finalicen.</b></p>
+                    <h3>5. Ejecucion Principal:</h3>
+                    <img src="/img/EjPrincipal_NFS.png" alt="Exploitation" class="detail-image">
+                    Este segmento imprime advertencias y mensajes de inicio y finalización, 
+                    asegurando que el usuario sea consciente de la naturaleza educativa del script.</b></p>
+                   
+                    <h3>6. Visualización de captura en Wireshark:</h3>
+                    <img src="/img/Wire_NFS.PNG" alt="Exploitation" class="detail-image">
+                    Desde Wireshark, podemos observar el tráfico generado por el script, lo que nos permite analizar en detalle el tipo y 
+                    la frecuencia de las solicitudes enviadas. Esta visualización facilita comprender cómo se comporta el tráfico en un escenario simulado de DDoS, 
+                    ayudándonos a identificar patrones de congestión y características típicas de un ataque en la red. </b></p>
+                   
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        // Script para manejar el estado activo
+        const navLinks = document.querySelectorAll('.nav-links a');
+        
+        // Función para actualizar el estado activo basado en el hash de la URL
+        function updateActiveState() {
+            const currentHash = window.location.hash || '#home';
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentHash) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        // Actualizar estado activo cuando cambia el hash
+        window.addEventListener('hashchange', updateActiveState);
+        
+        // Actualizar estado activo al cargar la página
+        document.addEventListener('DOMContentLoaded', updateActiveState);
+        
+        // Si no hay hash, establecer #home por defecto
+        if (!window.location.hash) {
+            window.location.hash = '#home';
+        }
+    </script>
+</body>
+</html>

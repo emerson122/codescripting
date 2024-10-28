@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Portfolio</title>
+    <style>
+        :root {
+            --bg-dark: #1a1b1f;
+            --bg-card: #25262b;
+            --accent: #3b82f6;
+            --text: #ffffff;
+            --text-secondary: #9ca3af;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text);
+        }
+        
+        nav {
+            background-color: var(--bg-card);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 6rem auto 2rem;
+            padding: 0 1rem;
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .card {
+            background-color: var(--bg-card);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: transform 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-text {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+        
+        .tag {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--text);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+        }
+
+        /* Estilos para la página de detalle */
+        .detail-container {
+            max-width: 900px;
+            margin: 6rem auto 2rem;
+            padding: 0 1rem;
+        }
+
+        .detail-header {
+            margin-bottom: 2rem;
+        }
+
+        .detail-header h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .detail-metadata {
+            display: flex;
+            gap: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .detail-metadata span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .detail-content {
+            background-color: var(--bg-card);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .detail-image {
+            width: 100%;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .detail-section {
+            margin-bottom: 2rem;
+        }
+
+        .detail-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .detail-section h3 {
+            font-size: 1.25rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--text);
+        }
+
+        .detail-section p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        #home, #detail-page {
+            display: none;
+        }
+
+        .active {
+            display: block !important;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            Portfolio
+        </div>
+        <div class="nav-links">
+            <a href="#" onclick="showHome()">Home</a>
+            <a href="#history">History</a>
+            <a href="#about">About</a>
+        </div>
+    </nav>
+
+  <!-- Página principal con las tarjetas -->
+  <section class="container active">
+    <div class="card-grid">
+        <a href="detail.html" class="card">
+            <img src="/api/placeholder/400/320" alt="Project 1">
+            <div class="card-content">
+                <h3 class="card-title">Security Analysis Project</h3>
+                <div>
+                    <span class="tag">Linux</span>
+                    <span class="tag">Security</span>
+                </div>
+                <p class="card-text">A comprehensive security analysis tool designed to identify and assess potential vulnerabilities in systems.</p>
+            </div>
+        </a>
+        
+        <a href="detail.html" class="card">
+            <img src="/api/placeholder/400/320" alt="Project 2">
+            <div class="card-content">
+                <h3 class="card-title">Network Monitor</h3>
+                <div>
+                    <span class="tag">Networking</span>
+                    <span class="tag">Python</span>
+                </div>
+                <p class="card-text">Advanced network monitoring solution with real-time traffic analysis and reporting capabilities.</p>
+            </div>
+        </a>
+    </div>
+</section>
+</main>
+
+    <script>
+        function showHome() {
+            document.getElementById('home').classList.add('active');
+            document.getElementById('detail-page').classList.remove('active');
+        }
+
+        function showDetail(projectId) {
+            document.getElementById('home').classList.remove('active');
+            document.getElementById('detail-page').classList.add('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details</title>
+    <style>
+        :root {
+            --bg-dark: #1a1b1f;
+            --bg-card: #25262b;
+            --accent: #3b82f6;
+            --text: #ffffff;
+            --text-secondary: #9ca3af;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        .card:visited .card-title {
+    color: var(--text); /* Define el color que quieras aquí */
+}
+.logo a {
+    color: var(--accent); /* Define aquí el color que quieras para el texto y el SVG */
+    text-decoration: none; /* Opcional: elimina el subrayado */
+}
+
+.logo a:visited {
+    color: var(--accent); /* Asegura que se mantenga el mismo color en el estado visitado */
+}
+
+.logo svg {
+    color: inherit; /* Hereda el color del enlace para que se mantenga consistente */
+}
+
+        
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text);
+        }
+        
+      /*Inicio Navbar*/
+
+nav {
+            background-color: var(--bg-card);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            position: relative;
+        }
+            /* Nuevo estilo para el estado activo */
+            .nav-links a.active {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: var(--accent);
+        }
+           /* Línea inferior para el estado activo */
+           .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        
+        .nav-links a:hover {
+            color: var(--accent);
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+        /*Fin Navbar*/
+        
+        .container {
+            max-width: 1200px;
+            margin: 6rem auto 2rem;
+            padding: 0 1rem;
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .card {
+            background-color: var(--bg-card);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: transform 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-text {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+        
+        .tag {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--text);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+        }
+
+        /* Estilos para la página de detalle */
+        .detail-container {
+            max-width: 900px;
+            margin: 6rem auto 2rem;
+            padding: 0 1rem;
+        }
+
+        .detail-header {
+            margin-bottom: 2rem;
+        }
+
+        .detail-header h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .detail-metadata {
+            display: flex;
+            gap: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .detail-metadata span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .detail-content {
+            background-color: var(--bg-card);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .detail-image {
+            width: 100%;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .detail-section {
+            margin-bottom: 2rem;
+        }
+
+        .detail-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .detail-section h3 {
+            font-size: 1.25rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--text);
+        }
+
+        .detail-section p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        #home, #detail-page {
+            display: none;
+        }
+
+        .active {
+            display: block !important;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo"><a href="index.html">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            Portfolio
+        </a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#history">History</a>
+            <a href="#about">About</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Página de detalle -->
+        <section class="detail-container">
+            <div class="detail-header">
+                <h1>Security Analysis Project</h1>
+                <div class="detail-metadata">
+                    <span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        2024-03-29
+                    </span>
+                    <span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                        HackMyVM
+                    </span>
+                    <span class="tag">Easy</span>
+                    <span class="tag">Linux</span>
+                </div>
+            </div>
+
+            <div class="detail-content">
+                <div class="detail-section">
+                    <h2>Overview</h2>
+                    <img src="/api/placeholder/400/320" alt="Project Overview" class="detail-image">
+                    <p>This security analysis project focuses on identifying and assessing potential vulnerabilities in Linux-based systems. Through a systematic approach, we explore various aspects of system security and implement robust solutions.</p>
+                </div>
+
+                <div class="detail-section">
+                    <h2>Process</h2>
+                    
+                    <h3>1. Initial Reconnaissance</h3>
+                    <img src="/api/placeholder/400/320" alt="Reconnaissance" class="detail-image">
+                    <p>The first step involves gathering information about the target system using various tools and techniques. This includes network scanning, service enumeration, and identifying potential entry points.</p>
+
+                    <h3>2. Vulnerability Assessment</h3>
+                    <img src="/api/placeholder/400/320" alt="Assessment" class="detail-image">
+                    <p>After the initial reconnaissance, we perform a thorough vulnerability assessment to identify potential security weaknesses and prioritize them based on their severity and potential impact.</p>
+
+                    <h3>3. Exploitation and Privilege Escalation</h3>
+                    <img src="/api/placeholder/400/320" alt="Exploitation" class="detail-image">
+                    <p>This phase involves attempting to exploit identified vulnerabilities to gain initial access and potentially escalate privileges within the system.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
