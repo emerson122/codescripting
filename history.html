@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeScripting - History</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        :root {
+            --bg-dark: #1a1b1f;
+            --bg-card: #25262b;
+            --accent: #3b82f6;
+            --text: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text);
+        }
+
+        /*Inicio Navbar*/
+        nav {
+            background-color: var(--bg-card);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            position: relative;
+        }
+
+        .nav-links a.active {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: var(--accent);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent);
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+        /*Fin Navbar*/
+
+        .container {
+            max-width: 1200px;
+            margin: 6rem auto 2rem;
+            padding: 0 1rem;
+        }
+
+        .header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background-color: var(--bg-card);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-title {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .chart-container {
+            background-color: var(--bg-card);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contribution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--bg-card);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-desc {
+            color: #9ca3af;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--text);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+        }
+
+        .timeline {
+            background-color: var(--bg-card);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--accent);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--accent);
+        }
+
+        .timeline-content {
+            background-color: rgba(59, 130, 246, 0.1);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            width: 100%;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #9ca3af;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            CodeScripting
+        </div>
+        <div class="nav-links">
+            <a href="/index.html">Home</a>
+            <a href="/history.html" class="active">History</a>
+            <a href="/about.html">About</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Resto del contenido igual que antes... -->
+        <header class="header">
+            <h1>Historial de Desarrollo</h1>
+            <p>Registro de scripts, proyectos y contribuciones</p>
+        </header>
+
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-title">Scripts Desarrollados</div>
+                <div class="stat-value">6</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-title">Contribuciones Totales</div>
+                <div class="stat-value">156</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-title">Lenguajes Utilizados</div>
+                <div class="stat-value">2</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-title">Estrellas Recibidas</div>
+                <div class="stat-value">238</div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="activityChart"></canvas>
+        </div>
+
+        <div class="contribution-grid">
+            <div class="project-card">
+                <h3 class="project-title">Security Incident Manager</h3>
+                <p class="project-desc">Sistema de gestión de incidentes de seguridad con capacidades de logging y análisis.</p>
+                <span class="tag">Python</span>
+                <span class="tag">Security</span>
+                <span class="tag">API</span>
+            </div>
+            <div class="project-card">
+                <h3 class="project-title">Network Monitor</h3>
+                <p class="project-desc">Herramienta de monitoreo de red en tiempo real con análisis de tráfico.</p>
+                <span class="tag">Python</span>
+                <span class="tag">Networking</span>
+            </div>
+            <div class="project-card">
+                <h3 class="project-title">Cloud Manager</h3>
+                <p class="project-desc">Gestión y monitoreo de servidores cloud con análisis automático.</p>
+                <span class="tag">Python</span>
+                <span class="tag">Cloud</span>
+                <span class="tag">Analytics</span>
+            </div>
+        </div>
+
+        <div class="timeline">
+            <h2>Línea de Tiempo</h2>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Network Flood Simulation</h3>
+                    <p>Desarrollo de simulador de ataques DDoS para pruebas de seguridad</p>
+                    <span class="tag">Octubre 2024</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Security</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Security Analysis Tool</h3>
+                    <p>Herramienta de análisis de seguridad con detección de anomalías</p>
+                    <span class="tag">Septiembre 2024</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Analysis</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Cloud Manager Release</h3>
+                    <p>Lanzamiento de la primera versión del gestor de servicios cloud</p>
+                    <span class="tag">Agosto 2024</span>
+                    <span class="tag">Cloud</span>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>© 2024 CodeScripting - emerson122</p>
+        </footer>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('activityChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [ 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct'],
+                datasets: [{
+                    label: 'Contribuciones Mensuales',
+                    data: [1, 2, 3, 4, 5, 6],
+                    borderColor: '#3b82f6',
+                    tension: 0.4,
+                    fill: true,
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#ffffff'
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        ticks: {
+                            color: '#9ca3af'
+                        },
+                        grid: {
+                            color: 'rgba(156, 163, 175, 0.1)'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#9ca3af'
+                        },
+                        grid: {
+                            color: 'rgba(156, 163, 175, 0.1)'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

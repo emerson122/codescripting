@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Details</title>
+    <title>About Me - Portfolio</title>
     <style>
         :root {
             --bg-dark: #1a1b1f;
             --bg-card: #25262b;
             --accent: #3b82f6;
             --text: #ffffff;
-            --text-secondary: #9ca3af;
         }
         
         * {
@@ -19,32 +18,13 @@
             box-sizing: border-box;
             font-family: system-ui, -apple-system, sans-serif;
         }
-
-        .card:visited .card-title {
-    color: var(--text); /* Define el color que quieras aquí */
-}
-.logo a {
-    color: var(--accent); /* Define aquí el color que quieras para el texto y el SVG */
-    text-decoration: none; /* Opcional: elimina el subrayado */
-}
-
-.logo a:visited {
-    color: var(--accent); /* Asegura que se mantenga el mismo color en el estado visitado */
-}
-
-.logo svg {
-    color: inherit; /* Hereda el color del enlace para que se mantenga consistente */
-}
-
         
         body {
             background-color: var(--bg-dark);
             color: var(--text);
         }
-        
-       /*Inicio Navbar*/
 
-nav {
+        nav {
             background-color: var(--bg-card);
             padding: 1rem 2rem;
             display: flex;
@@ -65,12 +45,10 @@ nav {
             gap: 0.5rem;
         }
         
-        
         .nav-links {
             display: flex;
             gap: 2rem;
         }
-        
         
         .nav-links a {
             color: var(--text);
@@ -80,13 +58,13 @@ nav {
             border-radius: 0.5rem;
             position: relative;
         }
-            /* Nuevo estilo para el estado activo */
-            .nav-links a.active {
+
+        .nav-links a.active {
             background-color: rgba(59, 130, 246, 0.1);
             color: var(--accent);
         }
-           /* Línea inferior para el estado activo */
-           .nav-links a.active::after {
+
+        .nav-links a.active::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -96,239 +74,197 @@ nav {
             background-color: var(--accent);
         }
 
-        
         .nav-links a:hover {
             color: var(--accent);
             background-color: rgba(59, 130, 246, 0.05);
         }
-        /*Fin Navbar*/
-        
+
         .container {
             max-width: 1200px;
             margin: 6rem auto 2rem;
-            padding: 0 1rem;
-        }
-        
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .card {
-            background-color: var(--bg-card);
-            border-radius: 0.5rem;
-            overflow: hidden;
-            transition: transform 0.3s;
-            cursor: pointer;
-            text-decoration: none;
-            color: var(--text);
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        
-        .card-content {
-            padding: 1.5rem;
-        }
-        
-        .card-title {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .card-text {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            line-height: 1.5;
-        }
-        
-        .tag {
-            display: inline-block;
-            background-color: var(--accent);
-            color: var(--text);
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            margin: 0.5rem 0.5rem 0.5rem 0;
+            padding: 0 2rem;
         }
 
-        /* Estilos para la página de detalle */
-        .detail-container {
-            max-width: 900px;
-            margin: 6rem auto 2rem;
-            padding: 0 1rem;
-        }
-
-        .detail-header {
-            margin-bottom: 2rem;
-        }
-
-        .detail-header h1 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .detail-metadata {
-            display: flex;
-            gap: 2rem;
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            margin-bottom: 1rem;
-        }
-
-        .detail-metadata span {
+        .profile-section {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
         }
 
-        .detail-content {
-            background-color: var(--bg-card);
-            border-radius: 0.5rem;
-            padding: 2rem;
-            margin-bottom: 2rem;
+        .profile-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 1rem;
+            object-fit: cover;
+            border: 3px solid var(--accent);
         }
 
-        .detail-image {
-            width: 100%;
-            border-radius: 0.5rem;
-            margin: 1rem 0;
+        .profile-info {
+            flex: 1;
+            min-width: 300px;
         }
 
-        .detail-section {
-            margin-bottom: 2rem;
-        }
-
-        .detail-section h2 {
-            font-size: 1.5rem;
+        .profile-info h1 {
+            font-size: 2.5rem;
+            color: var(--accent);
             margin-bottom: 1rem;
+        }
+
+        .profile-info h2 {
+            font-size: 1.5rem;
+            color: #9ca3af;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-info p {
+            color: var(--text);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-section {
+            background-color: var(--bg-card);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-card {
+            text-align: center;
+            padding: 1rem;
+            background-color: rgba(59, 130, 246, 0.1);
+            border-radius: 0.5rem;
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 0.5rem;
             color: var(--accent);
         }
 
-        .detail-section h3 {
-            font-size: 1.25rem;
-            margin: 1.5rem 0 1rem;
-            color: var(--text);
+        .contact-section {
+            margin-top: 3rem;
+            text-align: center;
         }
 
-        .detail-section p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 1rem;
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
         }
 
-        #home, #detail-page {
-            display: none;
+        .social-link {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            transition: transform 0.3s;
         }
 
-        .active {
-            display: block !important;
+        .social-link:hover {
+            transform: translateY(-5px);
         }
     </style>
 </head>
 <body>
     <nav>
-        <div class="logo"><a href="index.html">
+        <div class="logo">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
             </svg>
-            Portfolio
-        </a>
+            CodeScripting
         </div>
         <div class="nav-links">
-            <a href="index.html">Home</a>
+            <a href="#home">Home</a>
             <a href="#history">History</a>
-            <a href="#about">About</a>
+            <a href="#about" class="active">About</a>
         </div>
     </nav>
 
-    <main>
-        <!-- Página de detalle -->
-        <section class="detail-container">
-            <div class="detail-header">
-                <h1>Security Analysis Project</h1>
-                <div class="detail-metadata">
-                    <span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                            <line x1="16" y1="2" x2="16" y2="6"></line>
-                            <line x1="8" y1="2" x2="8" y2="6"></line>
-                            <line x1="3" y1="10" x2="21" y2="10"></line>
-                        </svg>
-                        2024-03-29
-                    </span>
-                    <span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                        </svg>
-                        HackMyVM
-                    </span>
-                    <span class="tag">Easy</span>
-                    <span class="tag">Linux</span>
+    <div class="container">
+        <div class="profile-section">
+            <img src="/img/ia.jpg" alt="Profile Picture" class="profile-image">
+            <div class="profile-info">
+                <h1>Emerson Ramos</h1>
+                <h2>Desarrollador Web Full Stack</h2>
+                <p>¡Hola! Soy un desarrollador apasionado por crear experiencias web únicas y funcionales. Me especializo en el desarrollo full stack y disfruto transformando ideas en aplicaciones web interactivas.</p>
+                <p>Con experiencia en tecnologías modernas de desarrollo web, me enfoco en crear soluciones eficientes y escalables que resuelvan problemas reales.</p>
+            </div>
+        </div>
+
+        <div class="skills-section">
+            <h2 style="color: var(--accent); margin-bottom: 1rem;">Mis Habilidades</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/>
+                    </svg>
+                    <h3>Frontend</h3>
+                </div>
+                <div class="skill-card">
+                    <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 19h16M4 5h16M9 12h6"/>
+                    </svg>
+                    <h3>Backend</h3>
+                </div>
+                <div class="skill-card">
+                    <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"/>
+                        <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/>
+                    </svg>
+                    <h3>DevOps</h3>
+                </div>
+                <div class="skill-card">
+                    <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 3h7a2 2 0 012 2v14a2 2 0 01-2 2h-7m0-18H5a2 2 0 00-2 2v14a2 2 0 002 2h7m0-18v18"/>
+                    </svg>
+                    <h3>Diseño UI/UX</h3>
                 </div>
             </div>
+        </div>
 
-            <div class="detail-content">
-                <div class="detail-section">
-                    <h2>Overview</h2>
-                    <img src="/api/placeholder/400/320" alt="Project Overview" class="detail-image">
-                    <p>This security analysis project focuses on identifying and assessing potential vulnerabilities in Linux-based systems. Through a systematic approach, we explore various aspects of system security and implement robust solutions.</p>
-                </div>
-
-                <div class="detail-section">
-                    <h2>Process</h2>
-                    
-                    <h3>1. Initial Reconnaissance</h3>
-                    <img src="/api/placeholder/400/320" alt="Reconnaissance" class="detail-image">
-                    <p>The first step involves gathering information about the target system using various tools and techniques. This includes network scanning, service enumeration, and identifying potential entry points.</p>
-
-                    <h3>2. Vulnerability Assessment</h3>
-                    <img src="/api/placeholder/400/320" alt="Assessment" class="detail-image">
-                    <p>After the initial reconnaissance, we perform a thorough vulnerability assessment to identify potential security weaknesses and prioritize them based on their severity and potential impact.</p>
-
-                    <h3>3. Exploitation and Privilege Escalation</h3>
-                    <img src="/api/placeholder/400/320" alt="Exploitation" class="detail-image">
-                    <p>This phase involves attempting to exploit identified vulnerabilities to gain initial access and potentially escalate privileges within the system.</p>
-                </div>
+        <div class="contact-section">
+            <h2 style="color: var(--accent); margin-bottom: 1rem;">Conecta Conmigo</h2>
+            <div class="social-links">
+                <a href="https://github.com/emerson122" class="social-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/emerson-ramos-9bb83b22a/" class="social-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect x="2" y="9" width="4" height="12"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                </a>
+                <a href="https://x.com/Emerson46508241" class="social-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                    </svg>
+                </a>
             </div>
-        </section>
-    </main>
-    <script>
-        // Script para manejar el estado activo
-        const navLinks = document.querySelectorAll('.nav-links a');
-        
-        // Función para actualizar el estado activo basado en el hash de la URL
-        function updateActiveState() {
-            const currentHash = window.location.hash || '#home';
-            
-            navLinks.forEach(link => {
-                if (link.getAttribute('href') === currentHash) {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
-            });
-        }
-
-        // Actualizar estado activo cuando cambia el hash
-        window.addEventListener('hashchange', updateActiveState);
-        
-        // Actualizar estado activo al cargar la página
-        document.addEventListener('DOMContentLoaded', updateActiveState);
-        
-        // Si no hay hash, establecer #home por defecto
-        if (!window.location.hash) {
-            window.location.hash = '#home';
-        }
-    </script>
+        </div>
+    </div>
 </body>
 </html>
